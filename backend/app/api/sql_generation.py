@@ -23,7 +23,7 @@ class SQLGenerateResponse(BaseModel):
 
 class SQLExplainRequest(BaseModel):
     sql: str
-    schema: str = ""
+    schema_text: str = ""
 
 
 class SQLExplainResponse(BaseModel):

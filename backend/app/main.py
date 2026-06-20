@@ -11,10 +11,22 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from contextlib import asynccontextmanager
+
 from app.config import settings
 from app.api import sql_generation, data_cleaning, visualization, database
+from app.core.database import init_local_database, ensure_default_workspace
 
-app = FastAPI(
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifecycle: initialize local database on startup."""
+    init_local_database()
+    ensure_default_workspace()
+    yield
+
+
+app = FastAPI(lifespan=lifespan,
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     docs_url="/api/docs",
