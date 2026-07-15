@@ -14,19 +14,17 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
     "@tanstack/react-query": "^5.17.0",
-    "recharts": "^2.10.0",
-    "plotly.js-dist-min": "^2.29.0",
-    "react-plotly.js": "^2.6.0",
     "@uiw/react-codemirror": "^4.21.0",
     "codemirror": "^6.0.0",
     "@codemirror/lang-sql": "^6.5.0",
     "@codemirror/theme-one-dark": "^6.1.0",
-    "lucide-react": "^0.303.0"
+    "lucide-react": "^0.303.0",
+    "recharts": "^2.10.0",
+    "clsx": "^2.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "@types/react-plotly.js": "^2.6.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",

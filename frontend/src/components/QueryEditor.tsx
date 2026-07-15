@@ -5,23 +5,26 @@ import { oneDark } from "@codemirror/theme-one-dark";
 interface QueryEditorProps {
   value: string;
   onChange: (value: string) => void;
+  readOnly?: boolean;
 }
 
-function QueryEditor({ value, onChange }: QueryEditorProps) {
+export default function QueryEditor({ value, onChange, readOnly = false }: QueryEditorProps) {
   return (
-    <div className="card">
-      <h3 className="text-sm font-medium text-gray-700 mb-2">SQL Query</h3>
-      <CodeMirror
-        value={value}
-        height="200px"
-        extensions={[sql()]}
-        theme={oneDark}
-        onChange={(val) => onChange(val)}
-        placeholder="SELECT ..."
-        className="rounded-lg overflow-hidden border border-gray-200"
-      />
-    </div>
+    <CodeMirror
+      value={value}
+      height="auto"
+      minHeight="100px"
+      extensions={[sql()]}
+      theme={oneDark}
+      onChange={(val) => onChange(val)}
+      readOnly={readOnly}
+      basicSetup={{
+        lineNumbers: true,
+        foldGutter: true,
+        highlightActiveLine: true,
+        autocompletion: true,
+      }}
+      className="text-sm"
+    />
   );
 }
-
-export default QueryEditor;
